@@ -69,8 +69,8 @@ class ImportCategories extends Command
             // Trim the category name from the first column.
             $name = trim($row[0]);
             // Generate an embedding for the category name using the SearchService.
-            //$embedding = $this->searchService->getQueryEmbedding($name);
-            $embedding = null;
+            $embedding = $this->searchService->getQueryEmbedding($name);
+            
             // Create or update the category with its name and embedding.
             Category::updateOrCreate(['name' => $name], ['embedding' => $embedding]);
             // Output a message to the console indicating the import status.
